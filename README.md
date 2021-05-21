@@ -2,10 +2,12 @@
 
 
 Step 1
- npm i
+
+   	npm i
  
 Step 2 - start server 
-	npm start
+
+   	npm start
 
 API Login Credential
 
