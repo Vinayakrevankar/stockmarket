@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {asyncMiddleware:_async} = require('../../common');
 const stockHandler = require('./stockHandler')
-const httpUtil = require('./../../utils/httpUtil')
 var cron = require('node-cron');
-const stockDA = require('./stockDA');
 
 router.use((req, res, next) => {
   next();
@@ -20,6 +18,7 @@ router.use((req, res, next) => {
 cron.schedule('*/30 * * * * *', async () => {
   console.log("HERE")
   let result= await stockHandler.updateStockValue();
+  console.log("result",result);
     if(result.length)
     global.io.emit('stockvalue', JSON.stringify(result));
     
